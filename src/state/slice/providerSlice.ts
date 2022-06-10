@@ -30,7 +30,7 @@ const providerSlice = createSlice({
       state.push(action.payload)
     },
     getAllProviders (state, action){
-      state.push(action.payload)
+      return action.payload
     },
     deleteProviders (state, action){
       state.push(action.payload)

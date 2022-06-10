@@ -10,11 +10,11 @@ const FormProviders = () => {
   const dispatch = useDispatch()
 
   const [name, setName] = useState("")
-  const onNameChange = (e: any) => setName(e.target.value)
+  const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)
   const [numberId, setNumberId] = useState("")
-  const onNumberIdChange = (e: any) => setNumberId(e.target.value)
+  const onNumberIdChange = (e: React.ChangeEvent<HTMLInputElement>) => setNumberId(e.target.value)
   const [note, setNote] = useState("")
-  const onNoteChange = (e: any) => setNote(e.target.value)
+  const onNoteChange = (e: React.ChangeEvent<HTMLInputElement>) => setNote(e.target.value)
 
 
   const createProvider = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -55,7 +55,7 @@ const FormProviders = () => {
         <br />
         <button onClick={createProvider}>Add provider</button>
       </form>
-      {providersComponent.map((provider: providerType) => <h1 key={provider.id}>{provider.name}</h1>)}
+      
     </div>
   )
 }

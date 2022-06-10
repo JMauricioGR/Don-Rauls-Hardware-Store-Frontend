@@ -13,6 +13,12 @@ const initialState: providerType[] = [
     name: "Provider 1",
     providerId: 12309848576,
     note: "Provider 1 note",
+  },
+  {
+    id: "1jh23kh32jh3",
+    name: "Hammer world",
+    providerId: 12309848576,
+    note: "Provider 1 note",
   }
 ]
 

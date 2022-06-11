@@ -17,15 +17,30 @@ const ListProviders = () => {
       }
     )
     
-  },[])
-
-  
+  },[])  
   
   return (
-    <ul>
+    <div className='list-style'>
       <h2>Providers List</h2>
-      {providersComponent.map((provider: providerType) => <li key={provider.id}>{provider.name}</li>)}
-    </ul>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Identification</th>
+          <th>Comments</th>
+          <th>Delete</th>
+        </tr>
+              
+        {providersComponent.
+          map((provider: providerType) => <tr key={provider.id}>
+            <td>{provider.name}</td>
+            <td>{provider.providerId}</td>
+            <td>{provider.note}</td>
+            <td><button>X</button></td>
+            </tr>)
+        }        
+      </table>
+    </div>
+    
   )
 }
 

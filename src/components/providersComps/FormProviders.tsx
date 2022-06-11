@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import addProvider from '../../actions/Providers/addProvider'
 import { providerType } from '../../state/slice/providerSlice'
 import { stateType } from '../../state/store'
+import ListProviders from './listProviders'
 
 const FormProviders = () => {
 
@@ -26,7 +27,7 @@ const FormProviders = () => {
   }
 
   return (
-    <div>
+    <div className='form-style'>
       <form action="">
         <label htmlFor="providerName">Provider name: </label>
         <input 
@@ -55,7 +56,7 @@ const FormProviders = () => {
         <br />
         <button onClick={createProvider}>Add provider</button>
       </form>
-      
+      <ListProviders />
     </div>
   )
 }

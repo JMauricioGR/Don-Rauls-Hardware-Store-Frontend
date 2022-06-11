@@ -1,11 +1,80 @@
-.App {
-  text-align: center;
+body{
+  font-family:  Helvetica, sans-serif, Arial;
+  background-color: #E7E4E0;
+  height: 100vh;
+  overflow: hidden;
+}
+#root{ 
+  height: 100vh;  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  text-align: left;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height: 100%; 
 }
+
+nav{
+  width: 100%;
+  display: flex;  
+  background-color: #335C67;
+  border-bottom: 0.3rem solid #FFF3B0;
+  color: #FFF3B0;
+  padding:  0 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+ul{
+  list-style: none;
+  padding: 2rem;
+  margin: 0;
+  
+}
+
+.form-style{
+  border: 0.1rem solid red;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.main-container{
+  display: flex;
+  height: 100%;
+}
+
+.side-menu{
+  display: flex;
+  /* position: fixed; */
+  background-color: #335C67;
+  width: 300px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10px 10px;
+  align-items: center;
+}
+.side-menu ul{
+  width: 100%;
+}
+
+.side-menu .menu-item{
+  color: #E7E4E0;
+  text-decoration: none;
+  display: block;
+  font-size: 2rem;
+  margin: 2rem 0;
+  border-bottom: 0.1rem solid #E7E4E0;
+}
+
+.side-menu .menu-item:hover{
+  color: #E09F3E;
+  border-bottom: 0.1rem solid #E09F3E;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -24,19 +93,18 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+input{
+  border: 0;
+  outline: none;
+  height: 2rem;
+  background: rgb(214, 214, 214);
+  border-radius: 5px;
+  display: inline-block;
+  width: 50%;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-button {
-  font-size: calc(10px + 2vmin);
+button{
+  border-radius: 2px;
 }

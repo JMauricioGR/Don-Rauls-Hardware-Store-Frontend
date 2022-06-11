@@ -24,9 +24,9 @@ function App() {
           <SideMenu />
           <div className='content-container'>
             <Routes>
-              <Route path='bills' element={<BillForm /> }/>
-              <Route path='recipes' element={<RecipeForm /> }/>
-              <Route path='stock' element={<StockForm /> }/>
+              <Route path='/bills' element={<BillForm /> }/>
+              <Route path='/recipes' element={<RecipeForm /> }/>
+              <Route path='/stock' element={<StockForm /> }/>
               <Route path='/' element={<FormProviders /> }/>           
             </Routes>
           </div>

@@ -1,20 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const SideMenu = () => {
   return (
     <div className='side-menu'>
       <ul>
         <li>
-          <a href="#" className='menu-item'>Bill</a>
+          <Link to="/bills" className='menu-item'>Bill</Link>
         </li>
         <li>
-          <a href="#" className='menu-item'>Recipes</a>
+          <Link to="/recipes" className='menu-item'>Recipes</Link>
         </li>
         <li>
-          <a href="#" className='menu-item'>Stock</a>
+          <Link to="/stock" className='menu-item'>Stock</Link>
         </li>
         <li>
-          <a href="#" className='menu-item'>Providers</a>
+          <Link to="/" className='menu-item'>Providers</Link>
         </li>
       </ul>
     </div>

@@ -3,8 +3,8 @@ import React from 'react'
 const BillForm = () => {
   return (
     <div>
-      <h1>billform</h1>
-      <h2>bill list</h2>
+      <h1>Bill form</h1>
+      <h2>Bill list</h2>
     </div>
   )
 }

@@ -29,32 +29,43 @@ const FormProviders = () => {
   return (
     <div className='form-style'>
       <form action="">
-        <label htmlFor="providerName">Provider name: </label>
-        <input 
-          type="text" 
-          name='providerName' 
-          value={name}
-          onChange={onNameChange}
-        />
-        <br />
-        <label htmlFor="providerId" >Provider document: </label>
-        <input 
-          type="number" 
-          name='providerId' 
-          placeholder='527354792' 
-          value={numberId}
-          onChange={onNumberIdChange}
-        />
-        <br />
-        <label htmlFor="providerNote">Comment: </label>
-        <input 
-          type="text" 
-          name='providerNote' 
-          value={note}
-          onChange={onNoteChange}
-        />
-        <br />
-        <button onClick={createProvider}>Add provider</button>
+        <table>
+          <tr>
+            <td className='td-label'><label htmlFor="providerName">Provider name: </label></td>
+            <td className='td-input'>
+              <input 
+              type="text" 
+              name='providerName' 
+              value={name}
+              onChange={onNameChange}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className='td-label'><label htmlFor="providerId" >Provider document: </label></td>
+            <td className='td-input'>
+              <input 
+              type="number" 
+              name='providerId' 
+              placeholder='527354792' 
+              value={numberId}
+              onChange={onNumberIdChange}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className='td-label'><label htmlFor="providerNote">Comment: </label></td>
+            <td className='td-input'>
+              <input 
+              type="text" 
+              name='providerNote' 
+              value={note}
+              onChange={onNoteChange}
+              />
+            </td>
+          </tr>
+        </table>
+      <button onClick={createProvider} className='btn-add'>Add provider</button>      
       </form>
       <ListProviders />
     </div>

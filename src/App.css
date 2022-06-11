@@ -1,8 +1,10 @@
+
 body{
   font-family:  Helvetica, sans-serif, Arial;
   background-color: #E7E4E0;
   height: 100vh;
   overflow: hidden;
+  font-size: 16px;
 }
 #root{ 
   height: 100vh;  
@@ -37,9 +39,10 @@ ul{
 }
 
 .form-style{
-  border: 0.1rem solid red;
+  /* border: 0.1rem solid red; */
   padding: 1rem;
   justify-content: space-between;
+  width: 100%;
 }
 
 .main-container{
@@ -49,7 +52,7 @@ ul{
 
 .side-menu{
   display: flex;
-  /* position: fixed; */
+
   background-color: #335C67;
   width: 300px;
   height: 100%;
@@ -104,7 +107,23 @@ input{
   
 }
 
+form table{
+  width: 100%;
+}
 
-button{
-  border-radius: 2px;
+.td-label{
+  width: 25%;
+}
+
+.btn-add{
+  border: none;
+  color: #E7E4E0;
+  padding: 0.6rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  font-size: 16px;
+  margin-top: 1rem;
 }

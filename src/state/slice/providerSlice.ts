@@ -33,7 +33,8 @@ const providerSlice = createSlice({
       return action.payload
     },
     deleteProviders (state, action){
-      state.push(action.payload)
+      let newState = state.filter((provider) => provider.id != action.payload)
+      return newState
     }
   }
 })

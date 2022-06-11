@@ -32,10 +32,12 @@ const ListProviders = () => {
       <h2>Providers List</h2>
       <table>
         <thead>
+          <tr>
           <th>Name</th>
           <th>Identification</th>
           <th>Comments</th>
           <th>Delete</th>
+          </tr>
         </thead>
         <tbody>
         {providersComponent.

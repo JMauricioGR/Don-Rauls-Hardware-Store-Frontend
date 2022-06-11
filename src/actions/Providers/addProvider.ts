@@ -4,7 +4,7 @@ const addProvider = async (name: string, numberId: string, note: string, dispatc
 
     const providerFromForm ={
       name,
-      numberId,
+      providerId: numberId,
       note
     
     }

@@ -7,7 +7,8 @@ type productType ={
   minimumUnits: number,
   maximumUnits: number,
   provider: string,
-  stock: number
+  stock: number,
+  price: number
 }
 
 const initialState: productType[] = [
@@ -18,7 +19,8 @@ const initialState: productType[] = [
     minimumUnits: 5,
     maximumUnits: 15,
     provider: "Hammer world principal",
-    stock: 3
+    stock: 3,
+    price: 100
   }
 ]
 
@@ -31,15 +33,15 @@ const productSlice = createSlice({
     },
     getAllProduct(state, action){
       return action.payload
-    },
-    updateProduct(state, action){
-      //arr1.map(obj => arr2.find(o => o.id === obj.id) || obj);
-      let newState: productType[] = state.map(productSt => action.payload.find(obj => obj.id === productSt.id) || productSt)
-      return newState
-    }
+    }//,
+    // updateProduct(state, action){
+    //   //arr1.map(obj => arr2.find(o => o.id === obj.id) || obj);
+    //   let newState: productType[] = state.map(productSt => action.payload.find(obj => obj.id === productSt.id) || productSt)
+    //   return newState
+    // }
   }
 })
 
 export default productSlice.reducer
 export type { productType }
-export const { createProduct, updateProduct, getAllProduct} = productSlice.actions
+export const { createProduct, getAllProduct} = productSlice.actions

@@ -5,6 +5,7 @@ const addProductAction = async(productName: string,
   minimumUnits: number,
   maximumUnits: number,
   provider: string,
+  price: number,
   dispatch:any)=>{
 
     const requestBody ={
@@ -13,7 +14,8 @@ const addProductAction = async(productName: string,
       minimumUnits,
       maximumUnits,
       provider,
-      stock: 0
+      stock: 0,
+      price,
     }
 
     let response = await fetch('http://localhost:8080/product/create',{

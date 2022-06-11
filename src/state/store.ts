@@ -11,7 +11,7 @@ const store = configureStore({
 
 type stateType = {
   providers: providerType[],
-  products: productType[]
+  products: productType[],
 }
 
 export default store

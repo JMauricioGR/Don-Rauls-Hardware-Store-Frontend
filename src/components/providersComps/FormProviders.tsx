@@ -18,7 +18,7 @@ const FormProviders = () => {
   const onNoteChange = (e: React.ChangeEvent<HTMLInputElement>) => setNote(e.target.value)
 
 
-  const createProvider = (e: React.FormEvent<HTMLButtonElement>) => {
+  const createProvider = (e: React.ChangeEvent<HTMLButtonElement>) => {
     e.preventDefault()
     addProvider(name,numberId,note, dispatch)    
     setName("")
@@ -30,8 +30,9 @@ const FormProviders = () => {
     <div className='form-style'>
       <form action="">
         <table>
+          <tbody>
           <tr>
-            <td className='td-label'><label htmlFor="providerName">Provider name: </label></td>
+            <th className='td-label'><label htmlFor="providerName">Provider name: </label></th>
             <td className='td-input'>
               <input 
               type="text" 
@@ -42,7 +43,7 @@ const FormProviders = () => {
             </td>
           </tr>
           <tr>
-            <td className='td-label'><label htmlFor="providerId" >Provider document: </label></td>
+            <th className='td-label'><label htmlFor="providerId" >Provider document: </label></th>
             <td className='td-input'>
               <input 
               type="number" 
@@ -54,7 +55,7 @@ const FormProviders = () => {
             </td>
           </tr>
           <tr>
-            <td className='td-label'><label htmlFor="providerNote">Comment: </label></td>
+            <th className='td-label'><label htmlFor="providerNote">Comment: </label></th>
             <td className='td-input'>
               <input 
               type="text" 
@@ -64,6 +65,7 @@ const FormProviders = () => {
               />
             </td>
           </tr>
+          </tbody>
         </table>
       <button onClick={createProvider} className='btn-add'>Add provider</button>      
       </form>

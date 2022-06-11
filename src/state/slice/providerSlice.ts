@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 type providerType = {
   id: string,
   name: string,
-  providerId: string,
+  providerId: number,
   note: string
 }
 
@@ -11,13 +11,13 @@ const initialState: providerType[] = [
   {
     id: "1jh234545kh32jh3",
     name: "Provider 1",
-    providerId: "12309848576",
+    providerId: 12309848576,
     note: "Provider 1 note",
   },
   {
     id: "1jh23kh32jh3",
     name: "Hammer world",
-    providerId: "12309848576",
+    providerId: 12309848576,
     note: "Provider 1 note",
   },
 ]

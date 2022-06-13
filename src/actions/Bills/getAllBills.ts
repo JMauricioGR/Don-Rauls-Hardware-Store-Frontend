@@ -5,4 +5,5 @@ const getAllBillsAction = async()=>{
   return data
 }
 
+
 export default getAllBillsAction

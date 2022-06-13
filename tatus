@@ -1,0 +1,65 @@
+[33mcommit 2e4d93ef92357fa33d841fe0ddf710c0918aa2d0[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Sun Jun 12 20:01:38 2022 -0500
+
+    Don Raul's Hardware Store --- sing in functionality implemented
+
+[33mcommit 913988d2d34d4f3945711c1653bf6ed774ca941f[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Sat Jun 11 13:01:46 2022 -0500
+
+    Don Raul's Hardware Store --- create product in stock section working properly
+
+[33mcommit 8aad37b4540266738861d64dc643e3a660fd8f9b[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Sat Jun 11 05:25:19 2022 -0500
+
+    Don Raul's Hardware Store --- Store reducer section, slice, create action, update action and get all action, for products created
+
+[33mcommit 1f379d7f82478ba7ccd993302cf4cc3f6ab43845[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Sat Jun 11 00:48:36 2022 -0500
+
+    Don Raul's Hardware Store --- delete provider from provider list working properly
+
+[33mcommit 848912bb8649270acec26521d431fcebfe0a449c[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Fri Jun 10 23:02:27 2022 -0500
+
+    Don Raul's Hardware Store --- more styles added and routes and menu links with reac router dom created
+
+[33mcommit 89ce23f320fce71b484797dc2ed241de8f6f7449[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Fri Jun 10 23:00:05 2022 -0500
+
+    Don Raul's Hardware Store --- some styles added
+
+[33mcommit 782b34258d3539ecb2683174f360d5a59367e74e[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Fri Jun 10 10:34:48 2022 -0500
+
+    Don Raul's Hardware Store --- List all providers working with Santiago's help
+
+[33mcommit 2eada2b4ce76c13b41c6a5c986159c2dedac91b1[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Thu Jun 9 23:21:25 2022 -0500
+
+    Don Raul's Hardware Store --- createProvider coneccted to backend and store working
+
+[33mcommit 9b90888bd634ed9b221e346bba808b33f5a18385[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Thu Jun 9 19:26:29 2022 -0500
+
+    Don Raul's Hardware Store --- FormProvider componenet created and tested get store provider info into FormProvider just for fun
+
+[33mcommit 725b541fc4a99dcfbf24549fa12dacbf1e67d2dd[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Thu Jun 9 01:11:50 2022 -0500
+
+    Don Raul's Hardware Store --- Project structure, store and providerSlice created
+
+[33mcommit dc2c89a4a6b8e4efd7c2cbfbd2759066561826da[m
+Author: Jehison Galarza <jehisonsc045@gmail.com>
+Date:   Thu Jun 9 00:09:46 2022 -0500
+
+    Don Raul's Hardware Store --- Base project created

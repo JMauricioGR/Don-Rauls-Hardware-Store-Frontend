@@ -1,4 +1,4 @@
-import { updateProduct } from "../../state/slice/productSlice"
+//import { updateProduct } from "../../state/slice/productSlice"
 
 const updateProductAction =async (id: string,productName: string,
   productDescription: string,
@@ -24,7 +24,7 @@ const updateProductAction =async (id: string,productName: string,
   })
 
   let data = await response.json()
-  dispatch(updateProduct)  
+  //dispatch(updateProduct)  
 }
 
 export default updateProductAction

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import addProvider from '../../actions/Providers/addProvider'
 import { providerType } from '../../state/slice/providerSlice'
 import { stateType } from '../../state/store'
-import ListProviders from './listProviders'
+import ListProviders from './ListProviders'
 
 const FormProviders = () => {
 
@@ -18,7 +18,7 @@ const FormProviders = () => {
   const onNoteChange = (e: React.ChangeEvent<HTMLInputElement>) => setNote(e.target.value)
 
 
-  const createProvider = (e: React.ChangeEvent<HTMLButtonElement>) => {
+  const createProvider = (e:  React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
     addProvider(name,numberId,note, dispatch)    
     setName("")

@@ -2,13 +2,14 @@ import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import FormProviders from './components/providersComps/FormProviders'
-import ListProviders from './components/providersComps/listProviders'
+//import ListProviders from './components/providersComps/listProviders'
 import SideMenu from './components/SideMenu'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import BillForm from './components/billComps/BillForm'
 import RecipeForm from './components/recipesComps/ReceiptForm'
 import StockForm from './components/stockComps/StockForm'
 import SingIn from './components/Logged/SingIn'
+import LogIn from './components/Logged/LogIn'
 
 function App() {
   
@@ -29,7 +30,8 @@ function App() {
               <Route path='/recipes' element={<RecipeForm /> }/>
               <Route path='/stock' element={<StockForm /> }/>
               <Route path='/providers' element={<FormProviders /> }/>           
-              <Route path='/' element={<SingIn /> }/>           
+              <Route path='/signin' element={<SingIn /> }/>           
+              <Route path='/' element={<LogIn /> }/>           
             </Routes>
           </div>
         </BrowserRouter>

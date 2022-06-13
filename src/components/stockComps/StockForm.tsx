@@ -28,7 +28,7 @@ const StockForm = () => {
   const [price, setPricet] = useState("")
   const onPriceChange = (e: React.ChangeEvent<HTMLInputElement>)=> setPricet(e.target.value)
 
-  const createProduct = (e: React.ChangeEvent<HTMLButtonElement>) => {
+  const createProduct = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
     addProductAction(productName, productDescription, parseInt(minUnits), parseInt(maxUnits), provider, parseInt(price), dispatch)
     setProductName("")

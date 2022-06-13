@@ -32,9 +32,6 @@ const SingIn = () => {
   return (
     <div>
       <h1>Sing In</h1>
-
-      
-
       <form action="">
         <table>
           <tr>

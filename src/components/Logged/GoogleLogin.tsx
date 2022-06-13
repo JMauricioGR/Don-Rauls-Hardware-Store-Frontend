@@ -27,6 +27,8 @@ const GoogleLogin: React.FunctionComponent = () => {
 
       navigate("/stock")
     }).catch((error)=>{
+      console.log(error);
+      
       const errorCode = error.code
       const errorMessage = error.message
       const email = error.email

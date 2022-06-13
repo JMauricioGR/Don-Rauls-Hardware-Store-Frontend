@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../firebaseConfig'
 import { logInInReducer } from '../../state/slice/loggedInSlice'
+import GitHubLogin from './GitHubLogin'
+import GoogleLogin from './GoogleLogin'
 
 const LogIn = () => {
 
@@ -96,7 +98,9 @@ const LogIn = () => {
           </tr>
         </table>
         <button onClick={(e)=>logInForm(e)} >Sign in</button>
-        <h4>Just for watch related information:</h4>
+        <GoogleLogin />
+        <GitHubLogin />
+        <h4>Just for watch related information</h4>
         <p>User name: {userName}</p>
         <p>Password: {password}</p>
         <h1>para actualizar los productos del receipt</h1>

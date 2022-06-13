@@ -28,6 +28,7 @@ const FormProviders = () => {
 
   return (
     <div className='form-style'>
+      <h1>Providers</h1>
       <form action="">
         <table>
           <tbody>

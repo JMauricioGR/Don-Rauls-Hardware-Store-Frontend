@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import addProvider from '../../actions/Providers/addProvider'
 import { providerType } from '../../state/slice/providerSlice'
 import { stateType } from '../../state/store'
@@ -7,8 +8,15 @@ import ListProviders from './ListProviders'
 
 const FormProviders = () => {
 
-  const providersComponent = useSelector((state: stateType)=> state.providers)
+  const {user} = useSelector((state: stateType)=> state.logged)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    if(user === null){
+      navigate("/")
+    }
+  },[])
 
   const [name, setName] = useState("")
   const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)

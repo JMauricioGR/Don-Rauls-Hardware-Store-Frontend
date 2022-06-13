@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import createReceiptAction from '../../actions/Receipts/createReceipt'
 import { receiptType } from '../../state/slice/receiptSlice'
 import { stateType } from '../../state/store'
@@ -10,6 +11,14 @@ const ReceiptForm = () => {
   const receiptsStore = useSelector((state:stateType)=> state.receipts)
   const providersStore = useSelector((state:stateType)=> state.providers)
   const dispatch = useDispatch()
+  
+  const {user} = useSelector((state: stateType)=> state.logged)
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(user === null){
+      navigate("/")
+    }
+  },[])
 
   const[providerNamest, setproviderName]=useState("")
   const[datest, setdate]=useState("")
@@ -108,14 +117,6 @@ const ReceiptForm = () => {
         </table>
       <button onClick={createReceipt} className='btn-add'>Add receipt</button>      
       </form>
-      <h3>Data to send</h3>
-      <p>{data.id}</p>
-      <p>{data.providerName}</p>
-      <p>{data.date}</p>
-      <p>{data.providerId}</p>
-      <p>{data.product}</p>
-      <p>{data.quantity}</p>
-
       <ReceiptList />
     </div>
   )

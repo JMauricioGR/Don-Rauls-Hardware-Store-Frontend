@@ -23,10 +23,11 @@ const ReceiptList = () => {
       <table>
         <thead>
           <tr>
-          <th>Name</th>
-          <th>Identification</th>
-          <th>Comments</th>
-          <th>Delete</th>
+          <th>Provider name</th>
+          <th>Provider id</th>
+          <th>Date</th>
+          <th>Products</th>
+          <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +38,6 @@ const ReceiptList = () => {
             <td>{receipts.date}</td>
             <td>{receipts.product}</td>
             <td>{receipts.quantity}</td>
-            {/* <td><button onClick={() => deleteOneProvider(`${provider.id}`)}>X</button></td> */}
             </tr>)
         }
         </tbody>  

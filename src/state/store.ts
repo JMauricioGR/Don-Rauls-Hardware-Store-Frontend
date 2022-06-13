@@ -20,6 +20,7 @@ type stateType = {
   products: productType[],
   receipts: receiptType[],
   bills: billType[],
+  logged: any,
 }
 
 export default store

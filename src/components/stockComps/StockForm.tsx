@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import addProductAction from '../../actions/Stock/addProduct'
 import { providerType } from '../../state/slice/providerSlice'
 import { stateType } from '../../state/store'
@@ -27,6 +28,15 @@ const StockForm = () => {
   
   const [price, setPricet] = useState("")
   const onPriceChange = (e: React.ChangeEvent<HTMLInputElement>)=> setPricet(e.target.value)
+
+  const {user} = useSelector((state: stateType)=> state.logged)
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(user === null){
+      navigate("/")
+    }
+  },[])
+
 
   const createProduct = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()

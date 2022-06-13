@@ -5,44 +5,45 @@ import { useNavigate } from 'react-router-dom'
 import { auth } from '../../firebaseConfig'
 import { logInInReducer } from '../../state/slice/loggedInSlice'
 
-const providerGitHubAuth = new GithubAuthProvider()
+const providerGithubAuth = new GithubAuthProvider()
 
-const GitHubLogin = () => {
+const GitHubLogIn: React.FunctionComponent = () => {
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
-  const signInWithGitHubButton = () => {
+  const dispatch = useDispatch();
 
-    signInWithPopup(auth, providerGitHubAuth).then((result)=>{
+  const navigate = useNavigate();
 
-      const credential:OAuthCredential | null = GithubAuthProvider.credentialFromResult(result)
+  const signInWithGithubButton = () => {
 
-      const token = credential!.accessToken
+    signInWithPopup(auth, providerGithubAuth)
+    .then((result) => {
 
-      const user = result.user
+      const credential:OAuthCredential | null = GithubAuthProvider.credentialFromResult(result);
+
+      const token = credential!.accessToken;
+
+      const user = result.user;
 
       dispatch(logInInReducer(user))
-
-      navigate('/stock')
+      
+      navigate('/welcome')
 
     }).catch((error) => {
 
-      const errorCode = error.code
-      const errorMessage = error.message
-      const email = error.email
-      const cedential = GithubAuthProvider.credentialFromError(error)
-
-    })
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.email;
+      const credential = GithubAuthProvider.credentialFromError(error);
+    });
   }
 
-  
 
   return (
     <div>
-      <button onClick={signInWithGitHubButton} >Github login</button>
+      <button onClick={signInWithGithubButton}>Github login</button>
     </div>
-  )
-}
+  );
+};
 
-export default GitHubLogin
+export default GitHubLogIn;

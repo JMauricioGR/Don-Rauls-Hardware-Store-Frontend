@@ -6,8 +6,9 @@ import ListProviders from './components/providersComps/listProviders'
 import SideMenu from './components/SideMenu'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import BillForm from './components/billComps/BillForm'
-import RecipeForm from './components/recipesComps/RecipeForm'
+import RecipeForm from './components/recipesComps/ReceiptForm'
 import StockForm from './components/stockComps/StockForm'
+import SingIn from './components/Logged/SingIn'
 
 function App() {
   
@@ -27,7 +28,8 @@ function App() {
               <Route path='/bills' element={<BillForm /> }/>
               <Route path='/recipes' element={<RecipeForm /> }/>
               <Route path='/stock' element={<StockForm /> }/>
-              <Route path='/' element={<FormProviders /> }/>           
+              <Route path='/providers' element={<FormProviders /> }/>           
+              <Route path='/' element={<SingIn /> }/>           
             </Routes>
           </div>
         </BrowserRouter>
@@ -37,3 +39,4 @@ function App() {
 }
 
 export default App
+// 

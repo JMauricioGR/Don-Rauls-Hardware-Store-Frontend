@@ -18,7 +18,7 @@ const addProductAction = async(productName: string,
       price,
     }
 
-    let response = await fetch('http://localhost:8080/product/create',{
+    let response = await fetch('https://don-raul-hardware-store.herokuapp.com/product/create',{
       method:"POST",
       headers:{"content-type":"application/json"},
       body: JSON.stringify(requestBody)

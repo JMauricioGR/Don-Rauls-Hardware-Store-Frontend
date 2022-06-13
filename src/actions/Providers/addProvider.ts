@@ -8,7 +8,7 @@ const addProvider = async (name: string, numberId: string, note: string, dispatc
       note
     
     }
-    let saveProvider = await fetch('http://localhost:8080/provider/create',
+    let saveProvider = await fetch('https://don-raul-hardware-store.herokuapp.com/provider/create',
     {
       method: 'POST',
       headers:{

@@ -24,7 +24,7 @@ const updateProductAction =async (id: string,productName: string,
   })
 
   let data = await response.json()
-  dispatch(updateProduct(data))  
+  dispatch(updateProduct)  
 }
 
 export default updateProductAction

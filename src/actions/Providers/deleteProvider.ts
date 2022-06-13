@@ -1,7 +1,7 @@
 const deleteProvider = async (id: string) => {
   console.log(id);
   
-  let response = await fetch(`http://localhost:8080/provider/delete/${id}`,
+  let response = await fetch(`https://don-raul-hardware-store.herokuapp.com/provider/delete/${id}`,
     {
       method:'DELETE',
     }

@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type productType ={
-  id: string,
+interface productType {
+  id?: string,
   productName: string,
   productDescription: string,
-  minimumUnits: number,
-  maximumUnits: number,
+  minimumUnits: number | string,
+  maximumUnits: number | string,
   provider: string,
-  stock: number,
-  price: number
+  stock: number | string,
+  price: number | string
 }
 
 const initialState: productType[] = [
@@ -33,12 +33,11 @@ const productSlice = createSlice({
     },
     getAllProduct(state, action){
       return action.payload
-    }//,
-    // updateProduct(state, action){
-    //   //arr1.map(obj => arr2.find(o => o.id === obj.id) || obj);
-    //   let newState: productType[] = state.map(productSt => action.payload.find(obj => obj.id === productSt.id) || productSt)
-    //   return newState
-    // }
+    },
+    updateProduct(state, action){
+      let newState: productType[] = state.map((productSt: productType) => productSt.id === action.payload.id ? action.payload: productSt )
+      return newState
+    }
   }
 })
 

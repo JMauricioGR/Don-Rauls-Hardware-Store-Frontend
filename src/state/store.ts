@@ -15,13 +15,17 @@ const store = configureStore({
   }
 })
 
-type stateType = {
-  providers: providerType[],
-  products: productType[],
-  receipts: receiptType[],
-  bills: billType[],
-  logged: any,
-}
+// type stateType = {
+//   providers: providerType[],
+//   products: productType[],
+//   receipts: receiptType[],
+//   bills: billType[],
+//   logged: any,
+// }
+
+
 
 export default store
-export type { stateType }
+// export type { stateType }
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

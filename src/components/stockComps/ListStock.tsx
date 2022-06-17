@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { stateType } from '../../state/store'
+import { RootState } from '../../state/store'
 import { getAllProduct, productType } from '../../state/slice/productSlice'
 import getAllProductsAction from '../../actions/Stock/getAllProductsAction'
 import getProviders from '../../actions/Providers/getProviders'
@@ -8,8 +8,8 @@ import { getAllProviders } from '../../state/slice/providerSlice'
 
 const ListStock = () => {
 
-  const productsStore = useSelector((state: stateType)=> state.products)
-  const providersStore = useSelector((state: stateType)=> state.providers)
+  const productsStore = useSelector((state: RootState)=> state.products)
+  const providersStore = useSelector((state: RootState)=> state.providers)
 
   const dispatch = useDispatch()
 

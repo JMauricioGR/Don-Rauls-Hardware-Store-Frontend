@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { productType } from "./productSlice";
 
-type billType = {
-  id:	string,
+interface billType {
+  id?:	string,
   date:	string,
   clientName:	string,
   seller:	string,
   products:	productType[],
-  total:	number
+  total:	number | string
 }
 
 const initialState: billType[] =[{

@@ -97,15 +97,16 @@ const LogIn = () => {
             </td>
           </tr>
         </table>
-        <button onClick={(e)=>logInForm(e)} >Sign in</button>
-        <GoogleLogin />
-        <GitHubLogin />
+        <button onClick={(e)=>logInForm(e)} >Logn in</button>
+        
         <h4>Just for watch related information</h4>
         <p>User name: {userName}</p>
         <p>Password: {password}</p>
         <h1>para actualizar los productos del receipt</h1>
         <p>{productList.stock}</p>
       </form>
+      <GoogleLogin />
+      <GitHubLogin />
     </div>
   )
 }

@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import addProvider from '../../actions/Providers/addProvider'
 import { providerType } from '../../state/slice/providerSlice'
-import { stateType } from '../../state/store'
+import { RootState } from '../../state/store'
 import ListProviders from './ListProviders'
 
 const FormProviders = () => {
 
-  const {user} = useSelector((state: stateType)=> state.logged)
+  const {user} = useSelector((state: RootState)=> state.logged)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

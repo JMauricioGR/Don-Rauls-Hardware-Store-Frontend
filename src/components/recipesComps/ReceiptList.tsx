@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import getAllReceipts from '../../actions/Receipts/getAllReceipts'
 import { getAllReceiptsReducer, receiptType } from '../../state/slice/receiptSlice'
-import { stateType } from '../../state/store'
+import { RootState } from '../../state/store'
 
 const ReceiptList = () => {
 
-  const recipesStore = useSelector((state:stateType)=> state.receipts)
+  const recipesStore = useSelector((state:RootState)=> state.receipts)
   const dispatch = useDispatch()
 
   useEffect(()=>{

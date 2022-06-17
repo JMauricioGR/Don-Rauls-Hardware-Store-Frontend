@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import createBillAction from '../../actions/Bills/createBill'
 import { billType } from '../../state/slice/billSlice'
-import { stateType } from '../../state/store'
+import { RootState } from '../../state/store'
 import BillsList from './BillsList'
 
 const BillForm = () => {
   
 
-   const dispatch = useDispatch()
-  const {user} = useSelector((state: stateType)=> state.logged)
+  const dispatch = useDispatch()
+  const {user} = useSelector((state: RootState)=> state.logged)
   const navigate = useNavigate()
   useEffect(()=>{
     if(user === null){
@@ -86,7 +86,7 @@ const BillForm = () => {
           </tr>
           <tr>
             <th className='td-label'><label htmlFor="minUnits">Client Name</label></th>
-            <td className='td-input'><input type="text" 
+            <td className='td-input'><input type="text" required
                 name="minUnits" id="" value={clientNamest} onChange={onClientNameChange} /></td>
           </tr>
           <tr>
@@ -119,3 +119,6 @@ const BillForm = () => {
 }
 
 export default BillForm
+
+
+

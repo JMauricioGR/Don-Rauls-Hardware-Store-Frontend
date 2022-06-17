@@ -27,7 +27,7 @@ function App() {
           <div className='content-container'>
             <Routes>
               <Route path='/bills' element={<BillForm /> }/>
-              <Route path='/recipes' element={<RecipeForm /> }/>
+              <Route path='/receipts' element={<RecipeForm /> }/>
               <Route path='/stock' element={<StockForm /> }/>
               <Route path='/providers' element={<FormProviders /> }/>           
               <Route path='/signin' element={<SingIn /> }/>           

@@ -8,7 +8,7 @@ const deleteProvider = async (id: string) => {
   )
   console.log(response);
   
-  let data = await response.ok
+  let data = await response.ok//si borra el provider = (true) si no lo borra es false
   return data
 }
 

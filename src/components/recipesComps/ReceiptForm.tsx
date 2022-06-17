@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import createReceiptAction from '../../actions/Receipts/createReceipt'
 import { receiptType } from '../../state/slice/receiptSlice'
-import { stateType } from '../../state/store'
+import { RootState } from '../../state/store'
 import ReceiptList from './ReceiptList'
 
 const ReceiptForm = () => {
 
-  const receiptsStore = useSelector((state:stateType)=> state.receipts)
-  const providersStore = useSelector((state:stateType)=> state.providers)
+  const receiptsStore = useSelector((state:RootState)=> state.receipts)
+  const providersStore = useSelector((state:RootState)=> state.providers)
   const dispatch = useDispatch()
   
-  const {user} = useSelector((state: stateType)=> state.logged)
+  const {user} = useSelector((state: RootState)=> state.logged)
   const navigate = useNavigate()
   useEffect(()=>{
     if(user === null){

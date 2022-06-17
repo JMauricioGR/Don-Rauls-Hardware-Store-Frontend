@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import deleteProvider from '../../actions/Providers/deleteProvider'
 import getProviders from '../../actions/Providers/getProviders'
 import { deleteProviders, getAllProviders, providerType } from '../../state/slice/providerSlice'
-import { stateType } from '../../state/store'
+import { RootState } from '../../state/store'
 
 const ListProviders = () => {
 
-  const providersComponent = useSelector((state: stateType)=> state.providers)
+  const providersComponent = useSelector((state: RootState)=> state.providers)
   const dispatch = useDispatch()
 
   useEffect(()=>{

@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import getAllBillsAction from '../../actions/Bills/getAllBills'
 import { billType, getAllBillsReducer } from '../../state/slice/billSlice'
-import { stateType } from '../../state/store'
+import { RootState } from '../../state/store'
 
 const BillsList = () => {
 
-  const billStore = useSelector((state: stateType)=> state.bills)
+  const billStore = useSelector((state: RootState)=> state.bills)
 
   const dispatch = useDispatch()
 

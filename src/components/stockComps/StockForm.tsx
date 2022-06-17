@@ -87,6 +87,7 @@ const StockForm = () => {
                 </select>
               </td>
             </tr>
+            <tr>{provider}</tr>
           </tbody>
         </table>
         <button onClick={createProduct} className='btn-add'>Add product</button>

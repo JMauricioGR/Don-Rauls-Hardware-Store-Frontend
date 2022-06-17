@@ -24,8 +24,19 @@ const BillForm = () => {
   const [productsst,setproductsst] =useState("")
   const [totalst,settotalst] =useState("")
   const [quantityst,setquantityst] =useState("")
+  const [stockToVerify,setStockToVerify] =useState(0)
   const [data,setDatast] =useState<string[]>([])
   const [productsWithStock, setProductsWithStock] = useState<productType[]>([])
+  const [productToBill, setProductToBill] = useState<productType>({
+    id: "",
+    productName: "",
+    productDescription: "",
+    minimumUnits: 0,
+    maximumUnits:0,
+    provider: "",
+    stock: 0,
+    price: 0
+  })
   useEffect(()=>{
     if(user === null){
       navigate("/")
@@ -34,14 +45,10 @@ const BillForm = () => {
     getAllProductsAction().then(
       (providers) => {
         dispatch(getAllProduct(providers))
+        setProductsWithStock(providers.filter((prod: { stock: number })=> prod.stock > 0))     
       }
-    )
-    console.log(productsList);
-    
-
-    setProductsWithStock(productsList.filter(prod=> prod.stock > 0))
-    console.log(productsWithStock);
-    
+      
+    )     
   },[])
   
   const onUserIdChange= (e: React.ChangeEvent<HTMLInputElement>)=> setuserIdst(e.target.value)
@@ -53,17 +60,20 @@ const BillForm = () => {
   const onProductsChange= (e: React.ChangeEvent<HTMLSelectElement>)=>{ 
     setproductsst(e.target.value)
     setquantityst("")
-    // const productSelectedObject= productsList.find(prod => prod.id === productsst)
-    // console.log("---------- ********** ---------------");
-    // console.log(productSelectedObject);
-  }
-  
-  useEffect(()=>{
-    const productSelectedObject= productsList.filter(prod => prod.id === productsst)
-    console.log("---------- ********** Use effect  ***********---------------");
-    console.log(productSelectedObject);
     
+  }
+
+  useEffect(()=>{
+    const productSelectedObject: productType[] = productsList.filter(prod => prod.id === productsst)
+    
+    setProductToBill(productSelectedObject[0]) 
+    console.log("--------------- ****************** ------------------");
+    console.log(productToBill);   
   },[productsst])
+  
+  // useEffect(()=>{
+  //   setStockToVerify(productToBill.stock as number)
+  // },[productToBill])
   
 
   const createBill = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -134,27 +144,23 @@ const BillForm = () => {
           <tr>
             <th className='td-label'><label htmlFor="price">Product</label></th>
             <select onChange={onProductsChange}>
-              <option value={""}>Select a product</option>
+              <option value={""}>Select product</option>
               {productsWithStock.map((prod: productType)=><option value={prod.id}>{prod.productName}</option>)}
             </select>
           </tr>
-          <tr><td>product selected :</td><td>{productsst}</td></tr>
+          <tr><td>Data to validate :</td><td>{productToBill.stock}</td></tr>
           <tr>
             <th className='td-label'><label htmlFor="quantity">Quantity</label></th>
             <td className='td-input'>
-              <input type="text" name="quantity" value={quantityst} onChange={onQuantityChange} />
-              <button id='btn-add-product' onClick={(ev)=>{
-                ev.preventDefault()
-                const productSelectedId = productsst
-                setDatast([...data, productSelectedId + " Quantity: "+ quantityst])
-                console.log(productsst)
-                console.log(data)
-                setquantityst("")
-                setproductsst("")
-                
-                
-              }
-              
+              <input type="text" name="quantity" className={(productToBill.stock< parseInt(quantityst) )? 'stock-validate' : ''} value={quantityst} onChange={onQuantityChange} />
+              <button id='btn-add-product' disabled={(productToBill.stock< parseInt(quantityst) ||quantityst=="") ? true : false} onClick={(ev)=>
+                {
+                  ev.preventDefault()
+                  const productSelectedId = productsst
+                  setDatast([...data, productSelectedId + " Quantity: "+ quantityst])
+                  setquantityst("")
+                  setproductsst("")
+                }
               }>Add product</button>
             </td>
           </tr>

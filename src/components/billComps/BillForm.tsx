@@ -36,8 +36,10 @@ const BillForm = () => {
         dispatch(getAllProduct(providers))
       }
     )
+    console.log(productsList);
+    
 
-    setProductsWithStock(productsList.filter(prod=> prod.stock as number > 0))
+    setProductsWithStock(productsList.filter(prod=> prod.stock > 0))
     console.log(productsWithStock);
     
   },[])
@@ -51,15 +53,16 @@ const BillForm = () => {
   const onProductsChange= (e: React.ChangeEvent<HTMLSelectElement>)=>{ 
     setproductsst(e.target.value)
     setquantityst("")
-    const productSelectedObject= productsList.find(prod => prod.id === productsst)
-    console.log("---------- ********** ---------------");
-    console.log(productSelectedObject);
+    // const productSelectedObject= productsList.find(prod => prod.id === productsst)
+    // console.log("---------- ********** ---------------");
+    // console.log(productSelectedObject);
   }
   
   useEffect(()=>{
     const productSelectedObject= productsList.filter(prod => prod.id === productsst)
-    console.log("---------- ********** ---------------");
+    console.log("---------- ********** Use effect  ***********---------------");
     console.log(productSelectedObject);
+    
   },[productsst])
   
 
@@ -140,7 +143,7 @@ const BillForm = () => {
             <th className='td-label'><label htmlFor="quantity">Quantity</label></th>
             <td className='td-input'>
               <input type="text" name="quantity" value={quantityst} onChange={onQuantityChange} />
-              <button onClick={(ev)=>{
+              <button id='btn-add-product' onClick={(ev)=>{
                 ev.preventDefault()
                 const productSelectedId = productsst
                 setDatast([...data, productSelectedId + " Quantity: "+ quantityst])

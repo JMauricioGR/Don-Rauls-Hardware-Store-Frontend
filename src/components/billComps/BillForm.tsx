@@ -1,4 +1,3 @@
-import { objectTraps } from 'immer/dist/internal'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -11,14 +10,11 @@ import BillsList from './BillsList'
 
 const BillForm = () => {
   
-
   const dispatch = useDispatch()
   const {user} = useSelector((state: RootState)=> state.logged)
   const productsList = useSelector((state: RootState)=> state.products)
   const navigate = useNavigate()
   
-  
-  const [userIdst,setuserIdst] =useState("")
   const [dateIdst,setdateIdst] =useState("")
   const [clientNamest,setclientNamest] =useState("")
   const [sellerst,setsellerst] =useState("")
@@ -43,7 +39,6 @@ const BillForm = () => {
     )    
   },[])
   
-  const onUserIdChange= (e: React.ChangeEvent<HTMLInputElement>)=> setuserIdst(e.target.value)
   const onDateChange= (e: React.ChangeEvent<HTMLInputElement>)=> setdateIdst(e.target.value)
   const onClientNameChange= (e: React.ChangeEvent<HTMLInputElement>)=> setclientNamest(e.target.value)
   const onSellerChange= (e: React.ChangeEvent<HTMLInputElement>)=> setsellerst(e.target.value)
@@ -69,15 +64,15 @@ const BillForm = () => {
   },[quantityst])
 
   useEffect(()=>{
-
-    console.log('---------- ********** UseEffect Data  ********* -----------------');
-    
-    if (subTotals && productToBill.subTotal)setSubTotals([...subTotals, productToBill.subTotal])
-    console.log(subTotals);
-    const result = (subTotals.reduce((a,b) =>(a+b),0))/2
+    const result = (subTotals.reduce((a,b) =>(a+b),0))
     console.log(result);
     settotalst(result.toString()) 
   },[productToBill])
+
+  useEffect(()=>{
+    if (subTotals && productToBill.subTotal)setSubTotals([...subTotals, productToBill.subTotal])
+    console.log(subTotals);
+  },[data])
   
   const createBill = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -89,7 +84,6 @@ const BillForm = () => {
       total:	totalst,
     }
     createBillAction(dataToSend,dispatch)
-    setuserIdst("")
     setdateIdst("")
     setclientNamest("")
     setsellerst("")
@@ -97,13 +91,6 @@ const BillForm = () => {
     settotalst("")
   }
   
-  const  productsToSend= (e: React.FormEvent<HTMLButtonElement> )=> {
-    e.preventDefault()
-    
-  }
-
-
-
 
   return (
     <div className='form-style'>
@@ -167,8 +154,6 @@ const BillForm = () => {
               <td>{prod.price}</td>
               <td>{prod.subTotal}</td>          
             </tr>)}
-           
-
           <tr>
             <th className='td-label'><label htmlFor="price">Total</label></th>
             <td className='td-input'><input type="text" name="price" id="" value={totalst} onChange={onTotalChange} /></td>

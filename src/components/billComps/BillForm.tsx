@@ -23,9 +23,8 @@ const BillForm = () => {
   const [sellerst,setsellerst] =useState("")
   const [productsst,setproductsst] =useState("")
   const [totalst,settotalst] =useState("")
-  const [quantityst,setquantityst] =useState("")
-  const [stockToVerify,setStockToVerify] =useState(0)
-  const [data,setDatast] =useState<string[]>([])
+  const [quantityst,setquantityst] =useState("0")
+  const [data,setDatast] =useState<productType[]>([])
   const [productsWithStock, setProductsWithStock] = useState<productType[]>([])
   const [productToBill, setProductToBill] = useState<productType>({} as productType )
 
@@ -39,8 +38,7 @@ const BillForm = () => {
         dispatch(getAllProduct(providers))
         setProductsWithStock(providers.filter((prod: { stock: number })=> prod.stock > 0))     
       }
-      
-    )     
+    )    
   },[])
   
   const onUserIdChange= (e: React.ChangeEvent<HTMLInputElement>)=> setuserIdst(e.target.value)
@@ -48,7 +46,9 @@ const BillForm = () => {
   const onClientNameChange= (e: React.ChangeEvent<HTMLInputElement>)=> setclientNamest(e.target.value)
   const onSellerChange= (e: React.ChangeEvent<HTMLInputElement>)=> setsellerst(e.target.value)
   const onTotalChange= (e: React.ChangeEvent<HTMLInputElement>)=> settotalst(e.target.value)
-  const onQuantityChange= (e: React.ChangeEvent<HTMLInputElement>)=> setquantityst(e.target.value)
+  const onQuantityChange= (e: React.ChangeEvent<HTMLInputElement>)=>{
+      setquantityst(e.target.value)
+    }
   const onProductsChange= (e: React.ChangeEvent<HTMLSelectElement>)=>{ 
     setproductsst(e.target.value)
     setquantityst("")
@@ -57,20 +57,15 @@ const BillForm = () => {
 
   useEffect(()=>{
     const productSelectedObject = productsList.find(prod => prod.id === productsst)
-
     if(productSelectedObject){
       setProductToBill(productSelectedObject)       
-    }
-    
-    console.log("--------------- ****************** ------------------");
-    console.log(productToBill);   
+    } 
   },[productsst])
-  
-  // useEffect(()=>{
-  //   setStockToVerify(productToBill.stock as number)
-  // },[productToBill])
-  
 
+  useEffect(()=>{
+    setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst)}))
+  },[quantityst])
+  
   const createBill = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const data: billType ={
@@ -138,12 +133,14 @@ const BillForm = () => {
           </tr>
           <tr>
             <th className='td-label'><label htmlFor="price">Product</label></th>
-            <select onChange={onProductsChange}>
-              <option value={""}>Select product</option>
-              {productsWithStock.map((prod: productType)=><option value={prod.id}>{prod.productName}</option>)}
-            </select>
+            <td>
+              <select onChange={onProductsChange}>
+                <option value={""}>Select product</option>
+                {productsWithStock.map((prod: productType)=><option key={prod.id} value={prod.id}>{prod.productName}</option>)}
+              </select>
+            </td>
           </tr>
-          <tr><td>Data to validate :</td><td>{productToBill?.stock}</td></tr>
+          <tr><td>Data to validate :</td><td>{productToBill.stock}</td></tr>
           <tr>
             <th className='td-label'><label htmlFor="quantity">Quantity</label></th>
             <td className='td-input'>
@@ -151,8 +148,10 @@ const BillForm = () => {
               <button id='btn-add-product' disabled={(productToBill.stock< parseInt(quantityst) ||quantityst=="") ? true : false} onClick={(ev)=>
                 {
                   ev.preventDefault()
-                  const productSelectedId = productsst
-                  setDatast([...data, productSelectedId + " Quantity: "+ quantityst])
+                  console.log("button action");
+                  
+                  setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst)}))
+                  setDatast([...data, productToBill])
                   setquantityst("")
                   setproductsst("")
                 }
@@ -160,12 +159,17 @@ const BillForm = () => {
             </td>
           </tr>
           <tr>
-          <h3>Bill products</h3>
+          <td><h3>Bill products</h3></td>
           </tr>
+            <td>Product:</td>
             {data.map(prod => <tr>
-              <td>Product:</td><td>{prod}</td>
-              
+              <td>{prod.productName}</td>              
             </tr>)}
+            <td>Quantity:</td>
+            {data.map(prod => <tr>
+              <td>{prod.quantity}</td>              
+            </tr>)}
+
           <tr>
             <th className='td-label'><label htmlFor="price">Total</label></th>
             <td className='td-input'><input type="text" name="price" id="" value={totalst} onChange={onTotalChange} /></td>

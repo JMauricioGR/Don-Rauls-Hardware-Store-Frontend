@@ -8,7 +8,8 @@ interface productType {
   maximumUnits: number | string,
   provider: string,
   stock: number | string,
-  price: number | string
+  price: number | string,
+  quantity?: number
 }
 
 const initialState: productType[] = [

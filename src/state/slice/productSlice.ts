@@ -9,7 +9,8 @@ interface productType {
   provider: string,
   stock: number | string,
   price: number | string,
-  quantity?: number
+  quantity?: number,
+  subTotal?: number
 }
 
 const initialState: productType[] = [

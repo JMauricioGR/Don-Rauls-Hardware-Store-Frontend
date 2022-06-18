@@ -1,3 +1,4 @@
+import { objectTraps } from 'immer/dist/internal'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -27,6 +28,7 @@ const BillForm = () => {
   const [data,setDatast] =useState<productType[]>([])
   const [productsWithStock, setProductsWithStock] = useState<productType[]>([])
   const [productToBill, setProductToBill] = useState<productType>({} as productType )
+  const [subTotals, setSubTotals] = useState<number[]>([0])
 
   useEffect(()=>{
     if(user === null){
@@ -52,7 +54,6 @@ const BillForm = () => {
   const onProductsChange= (e: React.ChangeEvent<HTMLSelectElement>)=>{ 
     setproductsst(e.target.value)
     setquantityst("")
-    
   }
 
   useEffect(()=>{
@@ -63,8 +64,22 @@ const BillForm = () => {
   },[productsst])
 
   useEffect(()=>{
-    setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst)}))
+    setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst), 
+      subTotal: prevState.price as number * parseInt(quantityst)}))
   },[quantityst])
+
+  useEffect(()=>{
+
+    console.log('---------- ********** UseEffect Data  ********* -----------------');
+    
+    if (subTotals && productToBill.subTotal)setSubTotals([...subTotals, productToBill.subTotal])
+    console.log(subTotals);
+    const result = (subTotals.reduce((a,b) =>(a+b),0))/2
+    console.log(result);
+    settotalst(result.toString())
+    
+    
+  },[productToBill])
   
   const createBill = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -148,9 +163,10 @@ const BillForm = () => {
               <button id='btn-add-product' disabled={(productToBill.stock< parseInt(quantityst) ||quantityst=="") ? true : false} onClick={(ev)=>
                 {
                   ev.preventDefault()
-                  console.log("button action");
-                  
-                  setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst)}))
+                  console.log("button action");                  
+                  setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst),
+                    subTotal: prevState.price as number * parseInt(quantityst)
+                  }))
                   setDatast([...data, productToBill])
                   setquantityst("")
                   setproductsst("")
@@ -161,14 +177,16 @@ const BillForm = () => {
           <tr>
           <td><h3>Bill products</h3></td>
           </tr>
-            <td>Product:</td>
-            {data.map(prod => <tr>
-              <td>{prod.productName}</td>              
+          <tr>
+            <td>Quantity:</td><td>Product:</td><td>Price:</td><td>SubTotal:</td>
+          </tr>
+            {data.map(prod => <tr key={prod.id}>
+              <td>{prod.quantity}</td> 
+              <td>{prod.productName}</td> 
+              <td>{prod.price}</td>
+              <td>{prod.subTotal}</td>          
             </tr>)}
-            <td>Quantity:</td>
-            {data.map(prod => <tr>
-              <td>{prod.quantity}</td>              
-            </tr>)}
+           
 
           <tr>
             <th className='td-label'><label htmlFor="price">Total</label></th>

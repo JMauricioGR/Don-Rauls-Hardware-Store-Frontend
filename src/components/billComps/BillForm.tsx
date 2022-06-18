@@ -27,16 +27,8 @@ const BillForm = () => {
   const [stockToVerify,setStockToVerify] =useState(0)
   const [data,setDatast] =useState<string[]>([])
   const [productsWithStock, setProductsWithStock] = useState<productType[]>([])
-  const [productToBill, setProductToBill] = useState<productType>({
-    id: "",
-    productName: "",
-    productDescription: "",
-    minimumUnits: 0,
-    maximumUnits:0,
-    provider: "",
-    stock: 0,
-    price: 0
-  })
+  const [productToBill, setProductToBill] = useState<productType>({} as productType )
+
   useEffect(()=>{
     if(user === null){
       navigate("/")
@@ -64,9 +56,12 @@ const BillForm = () => {
   }
 
   useEffect(()=>{
-    const productSelectedObject: productType[] = productsList.filter(prod => prod.id === productsst)
+    const productSelectedObject = productsList.find(prod => prod.id === productsst)
+
+    if(productSelectedObject){
+      setProductToBill(productSelectedObject)       
+    }
     
-    setProductToBill(productSelectedObject[0]) 
     console.log("--------------- ****************** ------------------");
     console.log(productToBill);   
   },[productsst])
@@ -148,11 +143,11 @@ const BillForm = () => {
               {productsWithStock.map((prod: productType)=><option value={prod.id}>{prod.productName}</option>)}
             </select>
           </tr>
-          <tr><td>Data to validate :</td><td>{productToBill.stock}</td></tr>
+          <tr><td>Data to validate :</td><td>{productToBill?.stock}</td></tr>
           <tr>
             <th className='td-label'><label htmlFor="quantity">Quantity</label></th>
             <td className='td-input'>
-              <input type="text" name="quantity" className={(productToBill.stock< parseInt(quantityst) )? 'stock-validate' : ''} value={quantityst} onChange={onQuantityChange} />
+              <input type="text" name="quantity" className={(productToBill?.stock< parseInt(quantityst) )? 'stock-validate' : ''} value={quantityst} onChange={onQuantityChange} />
               <button id='btn-add-product' disabled={(productToBill.stock< parseInt(quantityst) ||quantityst=="") ? true : false} onClick={(ev)=>
                 {
                   ev.preventDefault()

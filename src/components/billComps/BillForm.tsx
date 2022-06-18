@@ -76,31 +76,19 @@ const BillForm = () => {
     console.log(subTotals);
     const result = (subTotals.reduce((a,b) =>(a+b),0))/2
     console.log(result);
-    settotalst(result.toString())
-    
-    
+    settotalst(result.toString()) 
   },[productToBill])
   
   const createBill = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    const data: billType ={
-      id:	"2431123412",
-      date:	"string",
-      clientName:	"string",
-      seller:	"string",
-      products:	[{
-        id: "62a45862bc103278050ae1b9",
-        productName: "Hammer medium",
-        productDescription: "Product description 1 modified",
-        minimumUnits: 5,
-        maximumUnits: 15,
-        provider: "Hammer world principal",
-        stock: 3,
-        price: 100
-      }],
-      total:	88,
+    const dataToSend: billType ={
+      date: dateIdst,
+      clientName:	clientNamest,
+      seller:	sellerst,
+      products:	data,
+      total:	totalst,
     }
-    createBillAction(data,dispatch)
+    createBillAction(dataToSend,dispatch)
     setuserIdst("")
     setdateIdst("")
     setclientNamest("")
@@ -123,13 +111,6 @@ const BillForm = () => {
       <form action="">
       <table >
         <tbody>
-          <tr>
-            <th className='td-label'><label htmlFor="productName">User Id</label></th>
-            <td className='td-input'><input type="text" 
-            name="productName" id="" 
-            value={`${userIdst}`} 
-            onChange={onUserIdChange}/></td>
-          </tr>
           <tr>
             <th className='td-label'><label htmlFor="productDescription">Date</label></th>
             <td className='td-input'><input type="text" 

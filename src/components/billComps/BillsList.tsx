@@ -22,7 +22,7 @@ const BillsList = () => {
 
   return (
     <div>
-      <h2>Providers List</h2>
+      <h2>Bills List</h2>
       <table>
         <thead>
           <tr>

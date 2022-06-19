@@ -25,12 +25,14 @@ const BillForm = () => {
   const [productsWithStock, setProductsWithStock] = useState<productType[]>([])
   const [productToBill, setProductToBill] = useState<productType>({} as productType )
   const [subTotals, setSubTotals] = useState<number[]>([0])
+  const [productToUpdateStock, setProductsToUpdateStock] = useState<productType[]>([])
 
   useEffect(()=>{
     if(user === null){
       navigate("/")
     }
-
+    console.log("general useEffect ***************** --------------------------------")
+    
     getAllProductsAction().then(
       (providers) => {
         dispatch(getAllProduct(providers))
@@ -50,29 +52,38 @@ const BillForm = () => {
     setproductsst(e.target.value)
     setquantityst("")
   }
-
+  // Action to get the product base on select input in bill form
   useEffect(()=>{
     const productSelectedObject = productsList.find(prod => prod.id === productsst)
     if(productSelectedObject){
       setProductToBill(productSelectedObject)       
     } 
+    console.log("Productst useEffect ***************** --------------------------------")
   },[productsst])
-
+  //Update the subtotal property inside each product selected, based on quantity and own price
   useEffect(()=>{
     setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst), 
-      subTotal: prevState.price as number * parseInt(quantityst)}))
-  },[quantityst])
+      subTotal: prevState.price as number * parseInt(quantityst),
+      newStock: prevState.stock as number - parseInt(quantityst)
+    }))
+    
+    console.log("Quantityst useEffect ***************** --------------------------------")
+    
 
+  },[quantityst])
+  
   useEffect(()=>{
     const result = (subTotals.reduce((a,b) =>(a+b),0))
-    console.log(result);
     settotalst(result.toString()) 
+    console.log("ProductToBill useEffect ***************** --------------------------------")
   },[productToBill])
 
   useEffect(()=>{
     if (subTotals && productToBill.subTotal)setSubTotals([...subTotals, productToBill.subTotal])
-    console.log(subTotals);
+    console.log("Data useEffect ***************** --------------------------------")
   },[data])
+
+  
   
   const createBill = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -89,7 +100,10 @@ const BillForm = () => {
     setsellerst("")
     setproductsst("")
     settotalst("")
+    setDatast([])
   }
+
+
   
 
   return (
@@ -123,23 +137,33 @@ const BillForm = () => {
               </select>
             </td>
           </tr>
-          <tr><td>Data to validate :</td><td>{productToBill.stock}</td></tr>
+          <tr><td>Products avalible: </td><td>{productToBill.stock}</td></tr>
           <tr>
             <th className='td-label'><label htmlFor="quantity">Quantity</label></th>
             <td className='td-input'>
               <input type="text" name="quantity" className={(productToBill?.stock< parseInt(quantityst) )? 'stock-validate' : ''} value={quantityst} onChange={onQuantityChange} />
-              <button id='btn-add-product' disabled={(productToBill.stock< parseInt(quantityst) ||quantityst=="") ? true : false} onClick={(ev)=>
-                {
-                  ev.preventDefault()
-                  console.log("button action");                  
-                  setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst),
-                    subTotal: prevState.price as number * parseInt(quantityst)
-                  }))
-                  setDatast([...data, productToBill])
-                  setquantityst("")
-                  setproductsst("")
+              <button id='btn-add-product' 
+                disabled={(productToBill.stock< parseInt(quantityst) ||quantityst=="") ? true : false} 
+                onClick={async(ev)=>{
+                    ev.preventDefault()
+                    console.log("button action");                  
+                    setProductToBill(prevState => ({...prevState, quantity: parseInt(quantityst),
+                      subTotal: prevState.price as number * parseInt(quantityst),
+                      newStock: (prevState.stock as number - parseInt(quantityst))
+                    }))
+                    // if(productToBill.quantity){
+                    //   const newStock: number = productToBill.stock as number - productToBill.quantity 
+                    //   await setProductToBill(state => ({...state, stock: newStock })).then()
+                    // }
+                    
+                    
+                    setDatast([...data, productToBill])
+
+                    setquantityst("")
+                    setproductsst("")
+                  }
                 }
-              }>Add product</button>
+              >Add product</button>
             </td>
           </tr>
           <tr>
@@ -153,6 +177,7 @@ const BillForm = () => {
               <td>{prod.productName}</td> 
               <td>{prod.price}</td>
               <td>{prod.subTotal}</td>          
+              <td>{prod.newStock}</td>          
             </tr>)}
           <tr>
             <th className='td-label'><label htmlFor="price">Total</label></th>

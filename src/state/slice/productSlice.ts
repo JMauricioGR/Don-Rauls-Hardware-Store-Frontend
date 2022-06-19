@@ -8,8 +8,9 @@ interface productType {
   maximumUnits: number | string,
   provider: string,
   stock: number | string,
+  newStock?: number | string,
   price: number | string,
-  quantity?: number,
+  quantity?: any,
   subTotal?: number
 }
 

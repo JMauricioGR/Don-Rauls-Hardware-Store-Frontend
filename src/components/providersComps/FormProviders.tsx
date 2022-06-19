@@ -13,7 +13,7 @@ const FormProviders = () => {
   const navigate = useNavigate()
 
   useEffect(()=>{
-    if(user === null){
+    if(user === false){
       navigate("/")
     }
   },[])

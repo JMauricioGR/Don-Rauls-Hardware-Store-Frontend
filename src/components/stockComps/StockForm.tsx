@@ -14,7 +14,7 @@ const StockForm = () => {
   const navigate = useNavigate()
   
     useEffect(() => {
-      if (user === null) {
+      if (user === false) {
         navigate("/")
       }
     }, [])

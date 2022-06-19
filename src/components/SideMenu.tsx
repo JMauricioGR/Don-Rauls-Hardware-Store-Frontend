@@ -12,7 +12,7 @@ const SideMenu = () => {
           <Link to="/bills" className='menu-item'>Bill</Link>
         </li>
         <li>
-          <Link to="/recipes" className='menu-item'>Receipt</Link>
+          <Link to='/receipts' className='menu-item'>Receipt</Link>
         </li>
         <li>
           <Link to="/stock" className='menu-item'>Stock</Link>

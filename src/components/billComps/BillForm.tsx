@@ -28,7 +28,7 @@ const BillForm = () => {
   const [productToUpdateStock, setProductsToUpdateStock] = useState<productType[]>([])
 
   useEffect(() => {
-    if (user === null) {
+    if (user === false) {
       navigate("/")
     }
     console.log("general useEffect ***************** --------------------------------")
@@ -51,6 +51,7 @@ const BillForm = () => {
   const onProductsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setproductsst(e.target.value)
     setquantityst("")
+
   }
   // Action to get the product base on select input in bill form
   useEffect(() => {

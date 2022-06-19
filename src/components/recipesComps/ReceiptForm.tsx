@@ -14,11 +14,11 @@ const ReceiptForm = () => {
   
   const {user} = useSelector((state: RootState)=> state.logged)
   const navigate = useNavigate()
-  useEffect(()=>{
-    if(user === null){
+  useEffect(() => {
+    if (user === false) {
       navigate("/")
     }
-  },[])
+  }, [])
 
   const[providerNamest, setproviderName]=useState("")
   const[datest, setdate]=useState("")

@@ -4,7 +4,7 @@ import './App.css'
 import FormProviders from './components/providersComps/FormProviders'
 //import ListProviders from './components/providersComps/listProviders'
 import SideMenu from './components/SideMenu'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import BillForm from './components/billComps/BillForm'
 import RecipeForm from './components/recipesComps/ReceiptForm'
 import StockForm from './components/stockComps/StockForm'
@@ -15,10 +15,11 @@ import { logOutInReducer } from './state/slice/loggedInSlice'
 
 function App() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const logoutAction = ()=>{
     dispatch(logOutInReducer())
-    
+    navigate('/')
   }
 
   return (

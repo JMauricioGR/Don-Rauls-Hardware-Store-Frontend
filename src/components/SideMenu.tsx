@@ -1,7 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { logOutInReducer } from '../state/slice/loggedInSlice'
 
 const SideMenu = () => {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const logoutAction = ()=>{
+    dispatch(logOutInReducer())
+    navigate('/')
+  }
+
   return (
     <div className='side-menu'>
       <ul>
@@ -19,6 +29,9 @@ const SideMenu = () => {
         </li>
         <li>
           <Link to="/providers" className='menu-item'>Providers</Link>
+        </li>
+        <li>
+          <Link to="/" className='menu-item' onClick={logoutAction}>Log out</Link>
         </li>
       </ul>
     </div>

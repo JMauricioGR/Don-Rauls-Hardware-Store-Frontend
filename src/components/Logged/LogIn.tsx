@@ -75,7 +75,7 @@ const LogIn = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={(e) => logInForm(e)} >Log in</button>
+        <button onClick={(e) => logInForm(e)} >Login</button>
       </form>
       <GoogleLogin />
       <GitHubLogin />

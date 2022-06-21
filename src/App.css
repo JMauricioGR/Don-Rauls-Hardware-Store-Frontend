@@ -115,7 +115,7 @@ form table{
   width: 25%;
 }
 
-.btn-add{
+.btn-add, .btn-google, .btn-github, .btn-general, .signin{
   border: none;
   color: #E7E4E0;
   padding: 0.6rem 2rem;
@@ -123,14 +123,29 @@ form table{
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
-  background-color: #4CAF50;
   font-size: 16px;
   margin-top: 1rem;
 }
 
-.btn-add:hover{
+.btn-add {
+  background-color: #18ab29;  
+}
+.btn-google{
+  background-color: #2935bd;  
+}
+.btn-github{
+  background-color: #12131c;  
+}
+.btn-general{
+  background-color: #a2a2a4;  
+  color: #12131c;  
+}
+
+
+.btn-add:hover, .btn-google:hover, .btn-github:hover, .btn-general:hover{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
 
 tr, td ,th{
   margin: 0.5rem 0;

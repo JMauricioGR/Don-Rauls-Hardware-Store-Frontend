@@ -33,7 +33,7 @@ const SingIn = () => {
 
 
   return (
-    <div>
+    <div className='form-style'>
       <h1>Sing In</h1>
       <form action="">
         <table>
@@ -64,7 +64,7 @@ const SingIn = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={(e) => singInForm(e)} >Sign in</button>
+        <button onClick={(e) => singInForm(e)} className='btn-general'>Sign in</button>
         <h4>Just for watch related information:</h4>
         <p>User name: {userName}</p>
         <p>Password: {password}</p>

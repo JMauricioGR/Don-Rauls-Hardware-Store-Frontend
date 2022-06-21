@@ -44,7 +44,7 @@ const LogIn = () => {
 
 
   return (
-    <div>
+    <div className='form-style'>
       <h1>Log In</h1>
       <form action="">
         <table>
@@ -75,11 +75,11 @@ const LogIn = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={(e) => logInForm(e)} >Login</button>
+        <button onClick={(e) => logInForm(e)} className='btn-general'>Login</button>
       </form>
       <GoogleLogin />
       <GitHubLogin />
-      <Link to='/signin' className='menu-item'> Sing in</Link>
+      <Link to='/signin' className='btn-general'> Sing in</Link>
     </div>
   )
 }

@@ -41,7 +41,7 @@ const GitHubLogIn: React.FunctionComponent = () => {
 
   return (
     <div>
-      <button onClick={signInWithGithubButton}>Github login</button>
+      <button onClick={signInWithGithubButton} className='btn-github'>Github login</button>
     </div>
   );
 };

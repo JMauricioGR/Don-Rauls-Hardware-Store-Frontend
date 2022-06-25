@@ -6,7 +6,8 @@ type receiptType ={
   date:	string,
   providerId:	string,
   product:	string,
-  quantity:	string
+  quantity:	string,
+  fileUrl?: string
 }
 
 const initialState: receiptType []= [{

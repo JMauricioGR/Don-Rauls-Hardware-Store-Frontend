@@ -20,19 +20,13 @@ const LogIn = () => {
     if (userName && password) {
       signInWithEmailAndPassword(auth, userName, password).then((userCredntials) => {
         const userInfo = userCredntials.user
-        console.log("---------  ******  User Logged Info  ****** --------");
-        console.log(userCredntials);
-        console.log(userInfo);
-
         dispatch(logInInReducer(userInfo))
-
         navigate('/stock')
       })
         .catch((error) => {
           const errorCode = error.code
           const errorMessage = error.message
-          console.log(errorCode)
-          console.log(errorMessage)
+
         })
     }
     setUserName("")

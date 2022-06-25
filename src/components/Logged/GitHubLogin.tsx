@@ -27,7 +27,7 @@ const GitHubLogIn: React.FunctionComponent = () => {
 
       dispatch(logInInReducer(user))
       
-      navigate('/welcome')
+      navigate('/stock')
 
     }).catch((error) => {
 

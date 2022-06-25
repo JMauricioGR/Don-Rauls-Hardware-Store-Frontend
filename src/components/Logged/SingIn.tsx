@@ -15,14 +15,10 @@ const SingIn = () => {
     if (userName && password) {
       createUserWithEmailAndPassword(auth, userName, password).then((userCredntials) => {
         const userInfo = userCredntials.user
-        console.log("---------  ******  User Info  ****** --------");
-        console.log(userInfo);
       })
         .catch((error) => {
           const errorCode = error.code
           const errorMessage = error.message
-          console.log(errorCode)
-          console.log(errorMessage)
         })
     }
     setUserName("")
